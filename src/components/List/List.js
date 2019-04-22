@@ -8,13 +8,10 @@ class List extends Component {
     }
 
     handleChange(e) {
-        // console.log(e.target.id)
         this.props.deleteValueFromList(+e.target.id)
-        // console.log(e.target.id);
     }
 
     render() {
-        // console.log(this.props.items);
         return (
             <tbody>
             {this.props.items.map(item =>

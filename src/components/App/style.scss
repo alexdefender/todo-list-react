@@ -22,7 +22,7 @@
 
 .input {
   height: 2em;
-  width: 20em;
+  width: 30em;
   border: 1px solid rgb(216, 215, 215);
 }
 
@@ -32,7 +32,18 @@
 
 .table {
   margin-top: 1em;
-  width: 20em;
+  width: 26.5em;
+
+  thead > tr {
+    th:first-child {
+      width: 3em;
+
+    }
+    th:after {
+      content: ' \2191\2193';
+      color: gold;
+    }
+  }
 
   th {
     text-align: left;

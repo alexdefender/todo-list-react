@@ -44,6 +44,7 @@ class App extends Component {
             }
         }));
         this.sortFlag = !this.sortFlag;
+        console.log(this.state.items);
     }
 
     sortByName() {
@@ -60,6 +61,7 @@ class App extends Component {
             }
         }));
         this.sortFlag = !this.sortFlag;
+        console.log(this.state.items);
     }
 
     deleteValueFromList(id) {
@@ -70,7 +72,6 @@ class App extends Component {
     }
 
     render() {
-        // console.log(this.state)
         return (
             <div className="container">
                 <header className="header">TODO List</header>
