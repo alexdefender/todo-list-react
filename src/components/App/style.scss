@@ -30,4 +30,13 @@
   color: #00b431;
 }
 
+.table {
+  margin-top: 1em;
+  width: 20em;
 
+  th {
+    text-align: left;
+    padding-bottom: 0.5em;
+    cursor: pointer;
+  }
+}

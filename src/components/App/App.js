@@ -6,9 +6,11 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {items: [], value: ""};
+        this.sortFlag = true;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.sortById = this.sortById.bind(this);
+        this.sortByName = this.sortByName.bind(this);
     }
 
     handleChange(e) {
@@ -38,10 +40,31 @@ class App extends Component {
     }
 
     sortById() {
-        console.log(this.state.items);
-        this.setState(this.state.items.reverse());
-        console.log(this.state.items);
-        this.render();
+        this.setState(this.state.items.sort((a, b) => {
+            if (this.sortFlag) {
+                return b.id - a.id
+            } else {
+                return a.id - b.id;
+            }
+        }));
+        this.sortFlag = !this.sortFlag;
+    }
+
+    sortByName() {
+        // console.log(this.sortFlag)
+        this.setState(this.state.items.sort((a, b) => {
+            let valueA = a.value.toLowerCase(), valueB = b.value.toLowerCase();
+            if (this.sortFlag) {
+                if (valueA < valueB) {
+                    return -1;
+                }
+            } else {
+                if (valueA > valueB) {
+                    return -1;
+                }
+            }
+        }));
+        this.sortFlag = !this.sortFlag;
     }
 
     render() {
@@ -58,7 +81,7 @@ class App extends Component {
                     <thead>
                     <tr>
                         <th onClick={this.sortById}>#</th>
-                        <th>Name</th>
+                        <th onClick={this.sortByName}>TODO</th>
                     </tr>
                     </thead>
                     <List items={this.state.items}/>

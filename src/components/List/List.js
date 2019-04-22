@@ -12,7 +12,7 @@ class List extends Component {
             <tbody>
             {this.props.items.map(item =>
                 <tr key={item.id}>
-                    <th>{item.id}</th>
+                    <td>{item.id}</td>
                     <td>{item.value}</td>
                     <td>
                         <button className="btn btn-del">&#10006;</button>
