@@ -4,6 +4,13 @@ import "./style.scss";
 class List extends Component {
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        // console.log(e.target.id)
+        this.props.deleteValueFromList(+e.target.id)
+        // console.log(e.target.id);
     }
 
     render() {
@@ -15,7 +22,7 @@ class List extends Component {
                     <td>{item.id}</td>
                     <td>{item.value}</td>
                     <td>
-                        <button className="btn btn-del">&#10006;</button>
+                        <button id={item.id} className="btn btn-del" onClick={this.handleChange}>&#10006;</button>
                     </td>
                 </tr>
             )}

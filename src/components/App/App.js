@@ -11,6 +11,7 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.sortById = this.sortById.bind(this);
         this.sortByName = this.sortByName.bind(this);
+        this.deleteValueFromList = this.deleteValueFromList.bind(this);
     }
 
     handleChange(e) {
@@ -19,7 +20,6 @@ class App extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
         if (!this.state.value.length) {
             return;
         }
@@ -29,14 +29,10 @@ class App extends Component {
             id: this.state.items.length + 1
         };
 
-
         this.setState(state => ({
             items: state.items.concat(newItem),
             value: ""
         }));
-        // console.log(this.state)
-        console.log(this.state.items.length)
-
     }
 
     sortById() {
@@ -51,7 +47,6 @@ class App extends Component {
     }
 
     sortByName() {
-        // console.log(this.sortFlag)
         this.setState(this.state.items.sort((a, b) => {
             let valueA = a.value.toLowerCase(), valueB = b.value.toLowerCase();
             if (this.sortFlag) {
@@ -67,7 +62,15 @@ class App extends Component {
         this.sortFlag = !this.sortFlag;
     }
 
+    deleteValueFromList(id) {
+        this.setState(state => ({
+            items: state.items.filter(item => item.id !== id),
+            value: ""
+        }));
+    }
+
     render() {
+        // console.log(this.state)
         return (
             <div className="container">
                 <header className="header">TODO List</header>
@@ -84,7 +87,7 @@ class App extends Component {
                         <th onClick={this.sortByName}>TODO</th>
                     </tr>
                     </thead>
-                    <List items={this.state.items}/>
+                    <List items={this.state.items} deleteValueFromList={this.deleteValueFromList}/>
                 </table>
             </div>
         );
